@@ -6,8 +6,8 @@ m = 5;              % size of subset
 test_set_size = 100;
 sigma = 6;          % params for Normal dist.
 
-% data_type = '2 circles';
-data_type = 'spirals';
+data_type = '2 circles';
+% data_type = 'spirals';
 
 flag.plot_trainingset = 0;
 flag.plot_testingset = 0;
@@ -40,7 +40,7 @@ D = diag(D);
 z_n = @(x) Z_n(D, V, x, subset, sigma);
 w = solv_kern(z_n, training_set, y, m, lambda);
 
-%% test Nystrom
+%% test Nystromc
 f = @(x) w*z_n(x);
 predN = zeros(1, test_set_size);
 for i = 1:test_set_size
