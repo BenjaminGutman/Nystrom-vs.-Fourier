@@ -2,7 +2,7 @@
 
 N = 1000;           % size of training set
 d = 100;            % dimension 
-% m = 5;             % 
+m = 5;              % size of subset
 test_set_size = 100;
 sigma = 6;          % params for Normal dist.
 
@@ -11,6 +11,7 @@ data_type = 'spirals';
 
 flag.plot_trainingset = 0;
 flag.plot_testingset = 0;
+
 %% generate data
 switch data_type
     case '2 circles'
@@ -41,6 +42,7 @@ w = solv_kern(z_n, training_set, y, m, lambda);
 
 %% test Nystrom
 f = @(x) w*z_n(x);
+predN = zeros(1, test_set_size);
 for i = 1:test_set_size
     predN(i) = f(testing_set(i, :));
 end
@@ -55,6 +57,7 @@ w = solv_kern(z_f, training_set, y, 2*m, lambda);
 
 %% test Fourier
 f = @(x) w*z_f(x);
+predF = zeros(1, test_set_size);
 for i = 1:test_set_size
     predF(i) = f(testing_set(i, :));
 end

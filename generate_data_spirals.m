@@ -9,10 +9,11 @@ y = 1:N;
 y(inx) = -1;
 y(y>0) = 1;
 
-x(:, 1) = r.*cos(phi + pi/2.*y);
-x(:, 2) = r.*sin(phi + pi/2.*y);
+x(:, 1) = r.*cos(phi + pi/2.*y);        % x
+x(:, 2) = r.*sin(phi + pi/2.*y);        % y
 
 x = x + randn(size(x))/20;   % add noise
+
 if plot_flag
     figure('WindowStyle','docked');
     colormap(jet);

@@ -1,6 +1,7 @@
 function [x, y] = generate_data_circles(N, d, plot_flag)
 
-x = rand(2*N, 2)-1/2;
+factor = 1.1;
+x = rand(round(4*N/pi*factor), 2)-1/2;
 x(x(:, 1).^2 + x(:, 2).^2 >0.25, :) = []; %restrict circle
 
 x = x(1:N ,:); % remaining N samples;
